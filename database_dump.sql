@@ -104,7 +104,7 @@ CREATE TABLE `user` (
   `address` varchar(255) DEFAULT NULL,
   `phoneNum` int DEFAULT NULL,
   PRIMARY KEY (`iduser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,4 +151,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-31 12:21:37
+-- Dump completed on 2022-04-06 11:57:10
