@@ -1,8 +1,8 @@
 const mysql = require('mysql');
 const connection = mysql.createPool({
   host: 'localhost',
-  user: 'root',
-  password: 'test',
+  user: 'bankuser',
+  password: 'bankpass',
   database: 'banksimul'
 });
 module.exports = connection;
