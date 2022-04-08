@@ -1,0 +1,5 @@
+[0mGET / [32m200 [0m24.441 ms - 189[0m
+[0mGET /stylesheets/style.css [32m200 [0m4.000 ms - 119[0m
+[0mGET /favicon.ico [33m404 [0m4.940 ms - 150[0m
+[0mGET /transactions [33m404 [0m2.736 ms - 151[0m
+[0mGET /user [32m200 [0m96.199 ms - 157[0m
