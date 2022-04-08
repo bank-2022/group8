@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const login = require('../models/login_model');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
 
 router.post('/', 
   function(request, response) {
@@ -17,7 +19,8 @@ router.post('/',
               bcrypt.compare(pin,dbResult[0].pin, function(err,compareResult) {
                 if(compareResult) {
                   console.log("succes");
-                  response.send(true);
+                  const token = generateAccessToken({ card: cardNum });
+                  response.send(token);
                 }
                 else {
                     console.log("wrong pin");
@@ -39,6 +42,11 @@ router.post('/',
       response.send(false);
     }
   }
+  
 );
+function generateAccessToken(card) {
+  dotenv.config();
+  return jwt.sign(card, process.env.MY_TOKEN, { expiresIn: '30s' });
+}
 
 module.exports=router;
