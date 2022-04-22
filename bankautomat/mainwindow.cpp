@@ -11,5 +11,34 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    pLogin = new Login(ui->cardNum->text().toInt()); //lähetetään korttinumero
+    connect(pLogin, SIGNAL(pinCorrect_signal(int)),
+            this, SLOT(pinCorrect(int)), Qt::QueuedConnection);
+    pLogin->exec();
+}
+
+void MainWindow::pinCorrect(int num)
+{
+    delete pLogin;
+    pLogin = nullptr;
+    pmainUi = new mainUi(num);
+    connect(pmainUi, SIGNAL(mainUiClosed_signal()),
+            this, SLOT(mainUiClosed()), Qt::QueuedConnection);
+    this->hide();
+    pmainUi->exec();
+}
+
+void MainWindow::mainUiClosed()
+{
+    delete pmainUi;
+    pmainUi = nullptr;
+    this->show();
+
 }
 
