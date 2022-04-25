@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const card = require('../models/card_model');
 
-router.get('/:id?',
+router.get('/:cardNum?',
  function(request, response) {
-  if (request.params.id) {
-    card.getById(request.params.id, function(err, dbResult) {
+  if (request.params.cardNum) {
+    card.getByCardNum(request.params.cardNum, function(err, dbResult) {
       if (err) {
         response.json(err);
       } else {
@@ -21,6 +21,7 @@ router.get('/:id?',
       }
     });
   }
+
 });
 
 
