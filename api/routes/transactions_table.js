@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const transactions = require('../models/transactions_models');
 
+
 router.get('/:id?',
  function(request, response) {
+
   if (request.params.id) {
     transactions.getById(request.params.id, function(err, dbResult) {
       if (err) {
@@ -12,7 +14,9 @@ router.get('/:id?',
         response.json(dbResult);
       }
     });
-  } else {
+  } 
+  
+  else {
     transactions.getAll(function(err, dbResult) {
       if (err) {
         response.json(err);
@@ -26,6 +30,7 @@ router.get('/:id?',
 
 router.post('/', 
 function(request, response) {
+
   transactions.add(request.body, function(err, dbResult) {
     if (err) {
       response.json(err);

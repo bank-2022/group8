@@ -2,11 +2,12 @@ const db = require('../database');
 
 const transactions = {
   getById: function(id, callback) {
-    return db.query('select * from transactions where idaccount=?', [id], callback);
+    return db.query('select * from transactions where idaccount=? order by date desc', [id], callback);
   },
   getAll: function(callback) {
     return db.query('select * from transactions', callback);
   },
+  
   add: function(transactions, callback) {
     return db.query(
       'insert into transactions (sum,date,idcard,idaccount,transaction) values(?,?,?,?,?)',

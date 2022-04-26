@@ -4,13 +4,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const jwt = require('jsonwebtoken');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+//var indexRouter = require('./routes/index');
+//var usersRouter = require('./routes/users');
 const userRouter = require('./routes/user_table');
 const transactionsRouter = require('./routes/transactions_table');
 const cardRouter = require('./routes/card_table');
 const accountRouter = require('./routes/account_table');
+const transferRouter = require('./routes/debit_transfer');
 const loginRouter = require('./routes/login');
+
 
 var app = express();
 
@@ -26,14 +28,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/login', loginRouter);
 app.use(authenticateToken);
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/', indexRouter);
+//app.use('/users', usersRouter);
 app.use('/user', userRouter);
 app.use('/transactions' , transactionsRouter);
 app.use('/card', cardRouter);
 app.use('/', accountRouter);
+app.use('/debit', transferRouter);
 
 
 function authenticateToken(req, res, next) {
