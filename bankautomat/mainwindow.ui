@@ -20,27 +20,20 @@
    </size>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>230</y>
-      <width>151</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Kortti tunnistettu</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cardNum">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>160</y>
-      <width>113</width>
-      <height>24</height>
+      <y>260</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>Syötä kortti</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

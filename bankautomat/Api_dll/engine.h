@@ -25,7 +25,7 @@ private:
     QString Id;  
     QString balance;
     QString cardID;
-    short cardnumber = 0;
+    QString cardnumber = 0;
     void getAccountID();
     void getUserInfo();
     void getBalance();
@@ -34,7 +34,7 @@ private:
 
 public slots:
 //Slots to engine
-    void login(short cardNum,short pin);
+    void login(QString cardNum,short pin);
     void withdrawMoney(short);
     void showBalance();
     void browse_transactions();
