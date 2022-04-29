@@ -21,7 +21,7 @@ private:
 
 public slots:
 //Slots to engine
-    void Verify_loginData(short cardNum, short pin);
+    void Verify_loginData(QString cardNum, short pin);
     void withdrawMoney(short);
     void showBalance();
     void browse_transactions();
@@ -35,7 +35,7 @@ public slots:
 
 signals:
 //Signals to engine
-    void VerifyLoginSignal(short cardNum, short pin);
+    void VerifyLoginSignal(QString cardNum, short pin);
     void getBalance();
     void MakeWithdrawal(short);
     void getTransactions();

@@ -3,8 +3,8 @@
 Api_dll::Api_dll()
 {
     objectEngine = new Engine;
-    connect(this, SIGNAL(VerifyLoginSignal(short,short)),
-            objectEngine, SLOT(login(short,short)));
+    connect(this, SIGNAL(VerifyLoginSignal(QString,short)),
+            objectEngine, SLOT(login(QString,short)));
 
     connect(objectEngine, SIGNAL(loginInfo(QString, QString, QString, QString)),
             this, SLOT(loginInfo(QString, QString, QString, QString)));
@@ -37,8 +37,10 @@ Api_dll::~Api_dll()
     objectEngine = nullptr;
 }
 
-void Api_dll::Verify_loginData(short cardNum, short pin)
+void Api_dll::Verify_loginData(QString cardNum, short pin)
 {
+    qDebug()<< cardNum;
+    qDebug()<< "APIDLL";
     emit VerifyLoginSignal(cardNum,pin);  
 }
 
@@ -54,12 +56,13 @@ void Api_dll::showBalance()
 
 void Api_dll::browse_transactions()
 {
+    qDebug()<<"browse transactions";
     emit getTransactions();
 }
 
 void Api_dll::loginInfo(QString ID, QString name, QString add, QString pho)
 {
-
+    qDebug()<<"Login info";
     emit sendLoginInfo(ID, name, add ,pho);
 }
 

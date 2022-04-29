@@ -1,30 +1,54 @@
 #include "mainui.h"
 #include "ui_mainui.h"
 
-mainUi::mainUi(int mainCardNum, QWidget *parent) :
+mainUi::mainUi(User *user, Api_dll *api, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::mainUi)
 {
     qDebug()<< "Pääkäyttöliittymä avattu";
     ui->setupUi(this);
-    ui->cardNum->setText(QString::number(mainCardNum));
+
+    userMain = user;
+    ID = user->ID;
+    name = user->name;
+    add = user->add;
+    pho = user->pho;
+
+    ui->UserData->setText(user->name + "\n" + user->add + "\n"+ user->pho);
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()),
             this, SLOT(handleTimeout()));
-    timer->setInterval(10000);
+    timer->setInterval(30000);
     timer->start();
-
+    pApiDllMain = api;
+    connect(this, SIGNAL(getTransactions()),
+            pApiDllMain, SLOT(browse_transactions()),Qt::QueuedConnection);
+    connect(pApiDllMain,SIGNAL(sendTransactionsToExe(QString, QString)),
+            this, SLOT(transactions_slot(QString, QString)),Qt::QueuedConnection);
     pBalance = new Balance(this);
-    pTransactions = new Transactions(this);
-    pWithdraw = new Withdraw(this);
+    pWithdraw = new Withdraw(pApiDllMain,this);
 }
+
+
 
 mainUi::~mainUi()
 {
     qDebug() << "Pääkäyttöliittymä tuhottu";
     delete ui;
+    delete userMain;
+    userMain = nullptr;
+    delete pApiDllMain;
+    pApiDllMain = nullptr;
     delete timer;
     timer = nullptr;
+}
+
+void mainUi::transactions_slot(QString balance, QString transactions)
+{
+    qDebug()<< "transactions slot";
+    pTransactions = new Transactions(userMain, balance, transactions, this);
+    pTransactions->exec();
+    timer->start();
 }
 
 void mainUi::handleTimeout()
@@ -49,19 +73,11 @@ void mainUi::closeEvent(QCloseEvent *event)
 }
 
 
-void mainUi::on_BalanceButton_clicked()
-{
-    timer->stop();
-    pBalance->exec();
-    timer->start();
-}
-
-
 void mainUi::on_TransactionsButton_clicked()
 {
-    timer->stop();
-    pTransactions->exec();
-    timer->start();
+    timer->stop();   
+    emit getTransactions();
+    //pTransactions->exec();
 }
 
 

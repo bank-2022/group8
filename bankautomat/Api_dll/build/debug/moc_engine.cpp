@@ -108,7 +108,7 @@ static const uint qt_meta_data_Engine[] = {
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    2,    2,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::Short, QMetaType::Short,    8,    9,
+    QMetaType::Void, QMetaType::QString, QMetaType::Short,    8,    9,
     QMetaType::Void, QMetaType::Short,    2,
     QMetaType::Void,
     QMetaType::Void,
@@ -135,7 +135,7 @@ void Engine::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 2: _t->sendBalance((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 3: _t->withdrawResult((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 4: _t->sendTransactions((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 5: _t->login((*reinterpret_cast< short(*)>(_a[1])),(*reinterpret_cast< short(*)>(_a[2]))); break;
+        case 5: _t->login((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< short(*)>(_a[2]))); break;
         case 6: _t->withdrawMoney((*reinterpret_cast< short(*)>(_a[1]))); break;
         case 7: _t->showBalance(); break;
         case 8: _t->browse_transactions(); break;

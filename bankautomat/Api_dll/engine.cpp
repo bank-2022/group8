@@ -7,7 +7,7 @@ Engine::Engine()
 
 void Engine::getAccountID()
 {
-    QNetworkRequest request((base_url+"/card/"+QString::number(cardnumber)));
+    QNetworkRequest request((base_url+"/card/"+cardnumber));
 
     request.setRawHeader(QByteArray("Authorization"),(token));
 
@@ -57,11 +57,11 @@ void Engine::getFiveTransactions()
     reply = getBalanceManager->get(request);
 }
 
-void Engine::login(short cardNum, short pin)
+void Engine::login(QString cardNum, short pin)
 {
     cardnumber = cardNum;
     QJsonObject jsonObj; //luodaan JSON objekti ja lisätään kortti ja sen pin
-    jsonObj.insert("cardNum", cardNum);
+    jsonObj.insert("cardNum", QString::number(cardnumber.toInt()));
     jsonObj.insert("pin", QString::number(pin));
 
     QNetworkRequest request((base_url+"/login"));
@@ -217,7 +217,7 @@ void Engine::SendTransactions(QNetworkReply *)
 
      foreach (const QJsonValue &value, json_array) {
          QJsonObject json_obj = value.toObject();
-        transactions+=json_obj["date"].toString()+","+json_obj["transaction"].toString()+","+QString::number(json_obj["sum"].toInt())+"\r";
+        transactions+="Date "+json_obj["date"].toString()+", "+json_obj["transaction"].toString()+", Sum "+QString::number(json_obj["sum"].toInt())+"\r";
     }
      emit sendTransactions(balance, transactions);
      balance = "";
