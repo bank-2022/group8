@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Pin oikein</string>
+    <string>Ok</string>
    </property>
   </widget>
   <widget class="QPushButton" name="wrongPin">
