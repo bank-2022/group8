@@ -25,6 +25,7 @@ void Withdraw::withdraw_slot(bool result)
     }else{
         ui->Result->setText("Massit ei riitä");
     }
+    close();
 }
 
 void Withdraw::on_TwentyButton_clicked()

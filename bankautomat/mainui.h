@@ -7,7 +7,6 @@
 #include <QCloseEvent>
 
 #include "api_dll.h"
-#include "balance.h"
 #include "transactions.h"
 #include "withdraw.h"
 #include "user.h"
@@ -42,7 +41,6 @@ private:
     Ui::mainUi *ui;
     Api_dll *pApiDllMain;
     QTimer *timer;
-    Balance *pBalance;
     Transactions *pTransactions;
     Withdraw *pWithdraw;
     User *userMain;

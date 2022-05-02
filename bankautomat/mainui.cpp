@@ -14,7 +14,7 @@ mainUi::mainUi(User *user, Api_dll *api, QWidget *parent) :
     add = user->add;
     pho = user->pho;
 
-    ui->UserData->setText(user->name + "\n" + user->add + "\n"+ user->pho);
+    ui->UserData->setText(user->name);
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()),
             this, SLOT(handleTimeout()));
@@ -25,7 +25,6 @@ mainUi::mainUi(User *user, Api_dll *api, QWidget *parent) :
             pApiDllMain, SLOT(browse_transactions()),Qt::QueuedConnection);
     connect(pApiDllMain,SIGNAL(sendTransactionsToExe(QString, QString)),
             this, SLOT(transactions_slot(QString, QString)),Qt::QueuedConnection);
-    pBalance = new Balance(this);
     pWithdraw = new Withdraw(pApiDllMain,this);
 }
 
