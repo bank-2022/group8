@@ -49,4 +49,10 @@ function generateAccessToken(card) {
   return jwt.sign(card, process.env.MY_TOKEN, { expiresIn: '30s' });
 }
 
+function generateAccessToken(card) {
+  dotenv.config();
+  return jwt.sign(card, process.env.MY_TOKEN, { expiresIn: '1800s' });
+}
+
+
 module.exports=router;
