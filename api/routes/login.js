@@ -42,7 +42,12 @@ router.post('/',
       response.send(false);
     }
   }
+  
 );
+function generateAccessToken(card) {
+  dotenv.config();
+  return jwt.sign(card, process.env.MY_TOKEN, { expiresIn: '30s' });
+}
 
 function generateAccessToken(card) {
   dotenv.config();
