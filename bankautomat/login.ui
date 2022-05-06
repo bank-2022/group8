@@ -13,32 +13,6 @@
   <property name="windowTitle">
    <string>Kirjaudu</string>
   </property>
-  <widget class="QPushButton" name="correctPin">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>150</y>
-     <width>80</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Ok</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="wrongPin">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>200</y>
-     <width>80</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Pin väärin</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>

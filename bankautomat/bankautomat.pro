@@ -46,6 +46,12 @@ INCLUDEPATH += $$PWD/RFID125
 DEPENDPATH += $$PWD/RFID125
 
 
+win32: LIBS += -L$$PWD/PinDll/build/debug/ -lPinDll
+
+INCLUDEPATH += $$PWD/PinDll
+DEPENDPATH += $$PWD/PinDll
+
+
 win32: LIBS += -L$$PWD/Api_dll/build/debug/ -lApi_dll
 
 INCLUDEPATH += $$PWD/Api_dll

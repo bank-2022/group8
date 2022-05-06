@@ -57,12 +57,12 @@ void Engine::getFiveTransactions()
     reply = getBalanceManager->get(request);
 }
 
-void Engine::login(QString cardNum, short pin)
+void Engine::login(QString cardNum, QString pin)
 {
     cardnumber = cardNum;
     QJsonObject jsonObj; //luodaan JSON objekti ja lisätään kortti ja sen pin
     jsonObj.insert("cardNum", QString::number(cardnumber.toInt()));
-    jsonObj.insert("pin", QString::number(pin));
+    jsonObj.insert("pin", pin);
 
     QNetworkRequest request((base_url+"/login"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");

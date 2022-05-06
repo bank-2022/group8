@@ -34,7 +34,7 @@ private:
 
 public slots:
 //Slots to engine
-    void login(QString cardNum,short pin);
+    void login(QString cardNum,QString pin);
     void withdrawMoney(short);
     void showBalance();
     void browse_transactions();

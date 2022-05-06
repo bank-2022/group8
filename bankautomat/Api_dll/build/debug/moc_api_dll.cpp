@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../api_dll.h"
+#include "../../../../BankSimul/group8/bankautomat/Api_dll/api_dll.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -103,7 +103,7 @@ static const uint qt_meta_data_Api_dll[] = {
       21,    2,  165,    2, 0x0a /* Public */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::QString, QMetaType::Short,    3,    4,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,    4,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Short,    2,
     QMetaType::Void,
@@ -114,7 +114,7 @@ static const uint qt_meta_data_Api_dll[] = {
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    2,    2,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QString, QMetaType::Short,    3,    4,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,    4,
     QMetaType::Void, QMetaType::Short,    2,
     QMetaType::Void,
     QMetaType::Void,
@@ -133,7 +133,7 @@ void Api_dll::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         auto *_t = static_cast<Api_dll *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->VerifyLoginSignal((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< short(*)>(_a[2]))); break;
+        case 0: _t->VerifyLoginSignal((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 1: _t->getBalance(); break;
         case 2: _t->MakeWithdrawal((*reinterpret_cast< short(*)>(_a[1]))); break;
         case 3: _t->getTransactions(); break;
@@ -142,7 +142,7 @@ void Api_dll::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 6: _t->sendBalanceToExe((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 7: _t->sendWithdrawResult((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 8: _t->sendTransactionsToExe((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 9: _t->Verify_loginData((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< short(*)>(_a[2]))); break;
+        case 9: _t->Verify_loginData((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 10: _t->withdrawMoney((*reinterpret_cast< short(*)>(_a[1]))); break;
         case 11: _t->showBalance(); break;
         case 12: _t->browse_transactions(); break;
@@ -156,7 +156,7 @@ void Api_dll::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (Api_dll::*)(QString , short );
+            using _t = void (Api_dll::*)(QString , QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Api_dll::VerifyLoginSignal)) {
                 *result = 0;
                 return;
@@ -262,7 +262,7 @@ int Api_dll::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Api_dll::VerifyLoginSignal(QString _t1, short _t2)
+void Api_dll::VerifyLoginSignal(QString _t1, QString _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

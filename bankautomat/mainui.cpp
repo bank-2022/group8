@@ -23,8 +23,8 @@ mainUi::mainUi(User *user, Api_dll *api, QWidget *parent) :
     pApiDllMain = api;
     connect(this, SIGNAL(getTransactions()),
             pApiDllMain, SLOT(browse_transactions()),Qt::QueuedConnection);
-    connect(pApiDllMain,SIGNAL(sendTransactionsToExe(QString, QString)),
-            this, SLOT(transactions_slot(QString, QString)),Qt::QueuedConnection);
+    connect(pApiDllMain, SIGNAL(sendTransactionsToExe(QString,QString)),
+            this, SLOT(transactions_slot(QString,QString)),Qt::QueuedConnection);
     pWithdraw = new Withdraw(pApiDllMain,this);
 }
 
