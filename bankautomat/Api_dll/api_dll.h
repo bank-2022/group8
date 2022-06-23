@@ -10,6 +10,7 @@ class API_DLL_EXPORT Api_dll: public QObject
 {
 
     Q_OBJECT
+
 public:
     Api_dll();
     ~Api_dll();
@@ -21,7 +22,7 @@ private:
 
 public slots:
 //Slots to engine
-    void Verify_loginData(QString cardNum, short pin);
+    void Verify_loginData(QString cardNum, QString pin);
     void withdrawMoney(short);
     void showBalance();
     void browse_transactions();
@@ -35,7 +36,7 @@ public slots:
 
 signals:
 //Signals to engine
-    void VerifyLoginSignal(QString cardNum, short pin);
+    void VerifyLoginSignal(QString cardNum, QString pin);
     void getBalance();
     void MakeWithdrawal(short);
     void getTransactions();

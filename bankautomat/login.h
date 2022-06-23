@@ -6,6 +6,7 @@
 #include <QTimer>
 #include "api_dll.h"
 #include "user.h"
+#include "pindll.h"
 
 
 namespace Ui {
@@ -22,22 +23,25 @@ public:
 
 signals:
     void pinCorrect_signal(User*, Api_dll*);
-    void verifyLoginData_signal(QString, short);
+    void verifyLoginData_signal(QString, QString);
+    void loginResult(bool);
+    void deletePinUI();
 
 public slots:
     void loginInfo(QString ID, QString name, QString add, QString pho);
     void loginFailed_slot();
+    void getPinFromDll(QString);
 
 private slots:
-    void on_correctPin_clicked();
     void handleTimeout();
-    void on_wrongPin_clicked();
+
 
 private:
     Ui::Login *ui;
     QTimer *timer;
     QByteArray logCardNum;
     Api_dll *pApiDll;
+    PinDll *pPinDll;
     short pin;
     User *pUser;
 };

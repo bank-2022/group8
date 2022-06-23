@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     pRFID125->readCardID();
     connect(pRFID125,SIGNAL(sendCardID(QByteArray)),
             this,SLOT(RFID_slot(QByteArray)), Qt::QueuedConnection);
+
 }
 
 MainWindow::~MainWindow()
@@ -25,11 +26,21 @@ MainWindow::~MainWindow()
 void MainWindow::RFID_slot(QByteArray num)
 {
     qDebug()<< "Toimii";
+    pPinDll = new PinDll;
     pLogin = new Login(num); //lähetetään korttinumero
     connect(pLogin, SIGNAL(pinCorrect_signal(User*, Api_dll*)),
             this, SLOT(pinCorrect(User*, Api_dll*)), Qt::QueuedConnection);
-    pLogin->exec();
-    pRFID125->readCardID();
+    connect(this, SIGNAL(openPinWindow()),
+            pPinDll, SLOT(CardSlot()), Qt::QueuedConnection);
+    connect(pPinDll, SIGNAL(PinSignalToExe(QString)),
+            pLogin, SLOT(getPinFromDll(QString)), Qt::QueuedConnection);
+    connect(pLogin, SIGNAL(loginResult(bool)),
+            pPinDll, SLOT(PinResult(bool)), Qt::QueuedConnection);
+    connect(pLogin, SIGNAL(deletePinUI()),
+            this, SLOT(deletePinUi()), Qt::QueuedConnection);
+    emit openPinWindow();
+    //pLogin->exec();
+    //pRFID125->readCardID();
 }
 
 
@@ -38,6 +49,8 @@ void MainWindow::pinCorrect(User * user, Api_dll * api)
 {
     qDebug()<<"pin oikein";
     qDebug()<< user->ID;
+    delete pPinDll;
+    pPinDll = nullptr;
     delete pLogin;
     pLogin = nullptr;
     pmainUi = new mainUi(user, api);
@@ -55,5 +68,14 @@ void MainWindow::mainUiClosed()
     pRFID125->readCardID();
 
 
+}
+
+void MainWindow::deletePinUi()
+{
+    delete pPinDll;
+    delete pLogin;
+    pLogin = nullptr;
+    pPinDll = nullptr;
+    pRFID125->readCardID();
 }
 
